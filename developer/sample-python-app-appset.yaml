@@ -19,8 +19,8 @@ spec:
         path: helm/sample-python-app
         helm:
           releaseName: sample-python-app
-          valuesObject:
-            replicaCount: 1
+          valueFiles:
+            - values-development.yaml
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{environment}}-sample-python-app'

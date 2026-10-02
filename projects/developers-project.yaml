@@ -8,7 +8,7 @@ spec:
   description: Developer Applications
 
   sourceRepos:
-    - 'https://github.com/pandeyaws/app-infra.git'
+    - 'https://github.com/pandeyaws/sample-python-app.git'
 
   destinations:
     - namespace: dev-*

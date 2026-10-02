@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: sample-python-app
+  name: apps-sample-python-app
   namespace: argocd
 spec:
   description: Argo CD project for the sample Python application

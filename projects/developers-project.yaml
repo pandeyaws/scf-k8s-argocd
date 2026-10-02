@@ -1,0 +1,48 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: developers
+  namespace: argocd
+
+spec:
+  description: Developer Applications
+
+  sourceRepos:
+    - 'https://github.com/pandeyaws/app-infra.git'
+
+  destinations:
+    - namespace: dev-*
+      server: https://kubernetes.default.svc
+
+    - namespace: qa-*
+      server: https://kubernetes.default.svc
+
+    - namespace: prod-*
+      server: https://kubernetes.default.svc
+
+  clusterResourceWhitelist: []
+
+  namespaceResourceWhitelist:
+    - group: ''
+      kind: ConfigMap
+
+    - group: ''
+      kind: Secret
+
+    - group: ''
+      kind: Service
+
+    - group: apps
+      kind: Deployment
+
+    - group: apps
+      kind: StatefulSet
+
+    - group: networking.k8s.io
+      kind: Ingress
+
+    - group: autoscaling
+      kind: HorizontalPodAutoscaler
+
+  orphanedResources:
+    warn: true

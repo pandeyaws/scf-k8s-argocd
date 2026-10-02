@@ -12,7 +12,7 @@ spec:
     metadata:
       name: sample-python-app-{{environment}}
     spec:
-      project: sample-python-app
+      project: apps-sample-python-app
       source:
         repoURL: https://github.com/pandeyaws/sample-python-app.git
         targetRevision: master

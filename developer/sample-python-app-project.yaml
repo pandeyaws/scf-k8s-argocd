@@ -10,7 +10,9 @@ spec:
   destinations:
     - namespace: dev-sample-python-app
       server: https://kubernetes.default.svc
-  clusterResourceWhitelist: []
+  clusterResourceWhitelist:
+    - group: ''
+      kind: Namespace
   namespaceResourceWhitelist:
     - group: apps
       kind: Deployment
@@ -18,10 +20,3 @@ spec:
       kind: Service
   orphanedResources:
     warn: true
-  syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
-        syncOptions:
-          - CreateNamespace=true
-          - ServerSideApply=true  

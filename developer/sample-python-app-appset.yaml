@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: sample-python-app
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - environment: dev
+  template:
+    metadata:
+      name: sample-python-app-{{environment}}
+    spec:
+      project: sample-python-app
+      source:
+        repoURL: https://github.com/pandeyaws/sample-python-app.git
+        targetRevision: main
+        path: helm/sample-python-app
+        helm:
+          releaseName: sample-python-app
+          valuesObject:
+            replicaCount: 1
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{environment}}-sample-python-app'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+          - ServerSideApply=true

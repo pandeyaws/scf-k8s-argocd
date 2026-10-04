@@ -7,6 +7,7 @@ spec:
   description: Argo CD project for the sample Python application
   sourceRepos:
     - https://github.com/pandeyaws/sample-python-app.git
+    - https://github.com/pandeyaws/sample-python-app-argocd.git
   destinations:
     - namespace: dev-sample-python-app
       server: https://kubernetes.default.svc

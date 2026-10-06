@@ -9,6 +9,8 @@ spec:
     - https://github.com/pandeyaws/sample-python-app.git
     - https://github.com/pandeyaws/sample-python-app-argocd.git
   destinations:
+    - namespace: argocd
+      server: https://kubernetes.default.svc
     - namespace: dev-sample-python-app
       server: https://kubernetes.default.svc
   clusterResourceWhitelist:
@@ -24,14 +26,14 @@ metadata:
   name: apps-sample-python-app
   namespace: argocd   
 spec:
-  project: apps-sample-python-app 
+  project: apps-sample-python-app
   source:
     repoURL: https://github.com/pandeyaws/sample-python-app-argocd.git
     targetRevision: master
     path: argocd
   destination:
     server: https://kubernetes.default.svc
-    namespace: dev-sample-python-app  
+    namespace: argocd
   syncPolicy:
     automated:
       prune: true

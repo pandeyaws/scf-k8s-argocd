@@ -13,6 +13,14 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: dev-sample-python-app
       server: https://kubernetes.default.svc
+  roles:
+    - name: apps-sample-python-app-admin
+      description: Admin role for the sample Python application project
+      policies:
+        - p, proj:apps-sample-python-app:apps-sample-python-app-admin, applications, *, apps-sample-python-app/*, allow
+        - p, proj:apps-sample-python-app:apps-sample-python-app-admin, projects, *, apps-sample-python-app, allow
+      groups:
+        - 8363032c-dde1-48e7-a76e-af924b4762d2    
   clusterResourceWhitelist:
     - group: ''
       kind: Namespace

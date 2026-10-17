@@ -14,6 +14,7 @@ spec:
     - namespace: dev-sample-python-app
       server: https://kubernetes.default.svc
     - namespace: prd-sample-python-app
+      name: aks-cluster-dev-eus-02
       server: https://scf-aks-dev-mms8s86a.hcp.eastus.azmk8s.io:443
   roles:
     - name: apps-sample-python-app-admin

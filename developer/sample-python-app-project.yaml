@@ -16,6 +16,8 @@ spec:
     - namespace: prd-sample-python-app
       name: aks-cluster-dev-eus-02
       server: https://scf-aks-dev-mms8s86a.hcp.eastus.azmk8s.io:443
+    - namespace: prd-sample-python-app
+      server: aks-cluster-dev-eus-02
   roles:
     - name: apps-sample-python-app-admin
       description: Admin role for the sample Python application project

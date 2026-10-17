@@ -13,6 +13,8 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: dev-sample-python-app
       server: https://kubernetes.default.svc
+    - namespace: prd-sample-python-app
+      server: aks-cluster-dev-eus-02
   roles:
     - name: apps-sample-python-app-admin
       description: Admin role for the sample Python application project

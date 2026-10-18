@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-nginx-cluster-02
+  namespace: argocd
+spec:
+  project: platform
+  source:
+    repoURL: https://kubernetes.github.io/ingress-nginx
+    chart: ingress-nginx
+    targetRevision: 4.*
+    helm:
+      values: |
+        controller:
+          service:
+            externalTrafficPolicy: Local
+            annotations:
+              service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: /healthz
+              service.beta.kubernetes.io/azure-pip-name: 780801a1-dabf-45c7-95a8-b45f8ffea456
+              service.beta.kubernetes.io/azure-load-balancer-resource-group: MC_rg-aks-dev-eus-01_aks-cluster-dev-eus-02_eastus
+  destination:
+    name: aks-cluster-dev-eus-02
+    namespace: ingress-nginx
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true

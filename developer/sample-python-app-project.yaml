@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: apps-sample-python-app
+  name: sample-python-app
   namespace: argocd
 spec:
   description: Argo CD project for the sample Python application
@@ -11,8 +11,10 @@ spec:
   destinations:
     - namespace: argocd
       name: in-cluster
+
     - namespace: dev-sample-python-app
       name: in-cluster
+      
     - namespace: prd-sample-python-app
       name: aks-cluster-dev-eus-02
       
@@ -38,7 +40,7 @@ metadata:
   name: apps-sample-python-app
   namespace: argocd   
 spec:
-  project: apps-sample-python-app
+  project: sample-python-app
   source:
     repoURL: https://github.com/pandeyaws/sample-python-app-argocd.git
     targetRevision: master

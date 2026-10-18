@@ -10,12 +10,12 @@ spec:
     - https://github.com/pandeyaws/sample-python-app-argocd.git
   destinations:
     - namespace: argocd
-      server: https://kubernetes.default.svc
+      name: in-cluster
     - namespace: dev-sample-python-app
-      server: https://kubernetes.default.svc
-    - namespace: prd-sample-python-app
-      name: aks-cluster-dev-eus-02
-      server: https://scf-aks-dev-mms8s86a.hcp.eastus.azmk8s.io:443
+      name: in-cluster
+    # - namespace: prd-sample-python-app
+    #   name: aks-cluster-dev-eus-02
+    #   server: https://scf-aks-dev-mms8s86a.hcp.eastus.azmk8s.io:443
     
   roles:
     - name: apps-sample-python-app-admin
@@ -44,12 +44,9 @@ spec:
     targetRevision: master
     path: argocd
   destination:
-    server: '{{ .server }}'
+    name: in-cluster
     namespace: argocd
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true  
     syncOptions:
       - CreateNamespace=true
       - serverside-apply=true  

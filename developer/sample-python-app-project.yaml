@@ -15,7 +15,7 @@ spec:
     - namespace: sample-python-app-dev
       name: in-cluster
       
-    - namespace: prd-sample-python-app
+    - namespace: sample-python-app-prd
       name: aks-cluster-dev-eus-02
       
     
